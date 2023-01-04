@@ -29,9 +29,6 @@
     (combustible ?r - rover)
     (totalCost)
     (servidos)
-    (prio1)
-    (prio2)
-    (prio3)
   )
 
   (:action montar_en_Rover
@@ -43,11 +40,6 @@
                         (and (isPersona ?t) (= (suministroCargado ?r) 0) (< (personaCargada ?r) 2))
                         (and (isSuministro ?t) (= (suministroCargado ?r) 0) (= (personaCargada ?r) 0))
                        )    
-                       (or 
-                        (and (prioridad2 ?t) (= (prio3) 0))
-                        (and (prioridad1 ?t) (= (prio3) 0) (= (prio2) 0))
-                        (prioridad3 ?t)
-                       )
                   )
     :effect (and (montado ?t ?r) 
                  (not (en ?t ?l)) (not (pendiente ?t))
@@ -72,9 +64,9 @@
                  (when (isPersona ?t) (decrease (personaCargada ?r) 1))
                  (when (isSuministro ?t) (decrease (suministroCargado ?r) 1))
                  (increase (servidos) 1)
-                 (when (prioridad1 ?t) (and (decrease (prio1) 1) (increase (totalCost) 30)))
-                 (when (prioridad2 ?t) (and (decrease (prio2) 1) (increase (totalCost) 20)))
-                 (when (prioridad3 ?t) (and (decrease (prio3) 1) (increase (totalCost) 10)))
+                 (when (prioridad1 ?t) (increase (totalCost) 500))
+                 (when (prioridad2 ?t) (increase (totalCost) 200))
+                 (when (prioridad3 ?t) (increase (totalCost) 10))
             )
   )
 
@@ -82,6 +74,6 @@
     :parameters (?r - rover ?o - lugar ?d - lugar)
     :precondition (and (estacionado ?r ?o) (accesible ?o ?d) (> (combustible ?r) 0))
     :effect (and (estacionado ?r ?d) (not (estacionado ?r ?o)) (decrease (combustible ?r) 1)
-                 (increase (totalCost) 50))
+                 (increase (totalCost) 200))
   )
 )
