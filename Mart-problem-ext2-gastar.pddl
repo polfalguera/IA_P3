@@ -82,5 +82,5 @@
     (isAsentamiento AS4)
   )
 
-  (:goal (= (servidos) 15))
+  (:goal (= (servidos) 5))
 )
