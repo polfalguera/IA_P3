@@ -14,10 +14,10 @@
    (servido ?t - transportable)
    (montado ?t - transportable ?r - rover)
    (accesible ?o - lugar ?d - lugar)
-   (isPersona ?p transportable)
-   (isSuministro ?s transportable)
-   (isAlmacen ?p lugar)
-   (isAsentamiento ?s lugar)
+   (isPersona ?p - transportable)
+   (isSuministro ?s - transportable)
+   (isAlmacen ?p - lugar)
+   (isAsentamiento ?s - lugar)
   )
 
   (:action montar_en_Rover
@@ -33,7 +33,7 @@
 
 	(:action bajar_de_Rover
     :parameters (?t - transportable ?r - rover ?l - lugar)
-    :precondition (and (dentro ?t ?r)
+    :precondition (and (montado ?t ?r)
                        (estacionado ?r ?l)
                        (destino ?t ?l)
                        (or (and (isPersona ?t) (isAsentamiento ?l))
