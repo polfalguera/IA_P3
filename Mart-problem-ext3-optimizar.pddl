@@ -22,6 +22,10 @@
     (= (totalCost) 0)
     (= (servidos) 0)
 
+    (= (prio1) 15)
+    (= (prio2) 12)
+    (= (prio3) 13)
+
     (accesible AL1 AL2) (accesible AL2 AL1)
     (accesible AL1 AS3) (accesible AS3 AL1)
     (accesible AS3 AS4) (accesible AS4 AS3)
@@ -92,6 +96,6 @@
     (isAsentamiento AS4)
   )
 
-  (:goal (= (servidos) 15))
+  (:goal (= (servidos) 3))
   (:metric minimize (totalCost))
 )

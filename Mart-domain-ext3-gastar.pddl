@@ -1,7 +1,7 @@
 (define (domain Mart3Gastar)
   (:requirements :adl :typing :fluents)
 
-  (:types transportable rover lugar - object
+(:types transportable rover lugar - object
           almacen asentamiento - lugar
           persona suministro - transportable
 	)           
@@ -17,6 +17,7 @@
    (isPersona ?p - transportable)
    (isSuministro ?s - transportable)
    (isAsentamiento ?s - lugar)
+
    (prioridad1 ?t - transportable)
    (prioridad2 ?t - transportable)
    (prioridad3 ?t - transportable)
@@ -26,8 +27,10 @@
     (personaCargada ?r - rover)
     (suministroCargado ?r - rover)
     (combustible ?r - rover)
-    (totalCost)
     (servidos)
+    (prio1)
+    (prio2)
+    (prio3)
   )
 
   (:action montar_en_Rover
@@ -38,8 +41,13 @@
                        (or 
                         (and (isPersona ?t) (= (suministroCargado ?r) 0) (< (personaCargada ?r) 2))
                         (and (isSuministro ?t) (= (suministroCargado ?r) 0) (= (personaCargada ?r) 0))
-                   )    
-                )
+                       )    
+                       (or 
+                        (and (prioridad2 ?t) (= (prio3) 0))
+                        (and (prioridad1 ?t) (= (prio3) 0) (= (prio2) 0))
+                        (prioridad3 ?t)
+                       )
+                  )
     :effect (and (montado ?t ?r) 
                  (not (en ?t ?l)) (not (pendiente ?t))
                  (when (isPersona ?t) (increase (personaCargada ?r) 1))
@@ -62,10 +70,10 @@
                  (servido ?t) 
                  (when (isPersona ?t) (decrease (personaCargada ?r) 1))
                  (when (isSuministro ?t) (decrease (suministroCargado ?r) 1))
-                 (when (prioridad1 ?t) (increase (totalCost) 500))
-                 (when (prioridad2 ?t) (increase (totalCost) 200))
-                 (when (prioridad3 ?t) (increase (totalCost) 10))
                  (increase (servidos) 1)
+                 (when (prioridad1 ?t) (decrease (prio1) 1))
+                 (when (prioridad2 ?t) (decrease (prio2) 1))
+                 (when (prioridad3 ?t) (decrease (prio3) 1))
             )
   )
 
