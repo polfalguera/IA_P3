@@ -1,5 +1,5 @@
-(define (problem Mart-Problem1)
-   (:domain Mart)
+(define (problem Mart-Problem2Optimizar)
+   (:domain Mart2Optimitzar)
    (:objects 
         AL1 AL2 AL3 AL4 AL5 AL6 - almacen
         AS1 AS2 AS3 AS4 - asentamiento

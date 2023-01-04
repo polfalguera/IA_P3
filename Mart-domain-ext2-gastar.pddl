@@ -1,4 +1,4 @@
-(define (domain Mart)
+(define (domain Mart2Gastar)
   (:requirements :adl :typing :fluents)
 
   (:types transportable rover lugar - object
@@ -49,9 +49,9 @@
                        (estacionado ?r ?l)
                        (destino ?t ?l)
                        (or (and (isPersona ?t) (isAsentamiento ?l))
-                           (and (isSuministro ?t) (isAlmacen ?l))
-                           )
-                       ) 
+                           (isSuministro ?t)
+                       )
+                  ) 
                   
     :effect (and (en ?t ?l) 
                  (not (montado ?t ?r)) 
