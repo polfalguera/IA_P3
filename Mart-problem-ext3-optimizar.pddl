@@ -64,6 +64,6 @@
     (isAsentamiento AS4)
   )
 
-  (:goal (= (servidos) 3))
+  (:goal (= (servidos) 5))
   (:metric minimize (totalCost))
 )
