@@ -15,10 +15,12 @@
     (= (suministroCargado R1) 0)
     (= (suministroCargado R2) 0)
     (= (suministroCargado R3) 0)
-    (= (combustible R1) 10)
-    (= (combustible R2) 10)
-    (= (combustible R3) 10)
-    
+    (= (combustible R1) 15)
+    (= (combustible R2) 15)
+    (= (combustible R3) 15)
+
+    (= (totalCost) 0)
+
     (accesible AL1 AL2) (accesible AL2 AL1)
     (accesible AL1 AS3) (accesible AS3 AL1)
     (accesible AS3 AS4) (accesible AS4 AS3)

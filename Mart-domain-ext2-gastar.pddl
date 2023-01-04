@@ -24,6 +24,7 @@
     (personaCargada ?r - rover)
     (suministroCargado ?r - rover)
     (combustible ?r - rover)
+    (totalCost)
   )
 
   (:action montar_en_Rover
@@ -64,6 +65,7 @@
   (:action mover_Rover
     :parameters (?r - rover ?o - lugar ?d - lugar)
     :precondition (and (estacionado ?r ?o) (accesible ?o ?d) (> (combustible ?r) 0))
-    :effect (and (estacionado ?r ?d) (not (estacionado ?r ?o)) (decrease (combustible ?r) 1))
+    :effect (and (estacionado ?r ?d) (not (estacionado ?r ?o)) (decrease (combustible ?r) 1)
+                 (increase (totalCost) 1))
   )
 )

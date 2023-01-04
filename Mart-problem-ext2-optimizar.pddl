@@ -15,9 +15,9 @@
     (= (suministroCargado R1) 0)
     (= (suministroCargado R2) 0)
     (= (suministroCargado R3) 0)
-    (= (combustible R1) 10)
-    (= (combustible R2) 10)
-    (= (combustible R3) 10)
+    (= (combustible R1) 15)
+    (= (combustible R2) 15)
+    (= (combustible R3) 15)
     
     (= (totalCost) 0)
 
