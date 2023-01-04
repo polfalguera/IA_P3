@@ -16,13 +16,13 @@
    (accesible ?o - lugar ?d - lugar)
    (isPersona ?p - transportable)
    (isSuministro ?s - transportable)
-   (isAlmacen ?p - lugar)
    (isAsentamiento ?s - lugar)
   )
 
   (:functions
     (personaCargada ?r - rover)
     (suministroCargado ?r - rover)
+    (servidos)
   )
 
   (:action montar_en_Rover
@@ -57,6 +57,7 @@
                  (servido ?t) 
                  (when (isPersona ?t) (decrease (personaCargada ?r) 1))
                  (when (isSuministro ?t) (decrease (suministroCargado ?r) 1))
+                 (increase (servidos) 1)
             )
   )
 

@@ -16,7 +16,6 @@
    (accesible ?o - lugar ?d - lugar)
    (isPersona ?p - transportable)
    (isSuministro ?s - transportable)
-   (isAlmacen ?p - lugar)
    (isAsentamiento ?s - lugar)
   )
 
@@ -25,6 +24,7 @@
     (suministroCargado ?r - rover)
     (combustible ?r - rover)
     (totalCost)
+    (servidos)
   )
 
   (:action montar_en_Rover
@@ -59,6 +59,7 @@
                  (servido ?t) 
                  (when (isPersona ?t) (decrease (personaCargada ?r) 1))
                  (when (isSuministro ?t) (decrease (suministroCargado ?r) 1))
+                 (increase (servidos) 1)
             )
   )
 
@@ -66,6 +67,6 @@
     :parameters (?r - rover ?o - lugar ?d - lugar)
     :precondition (and (estacionado ?r ?o) (accesible ?o ?d) (> (combustible ?r) 0))
     :effect (and (estacionado ?r ?d) (not (estacionado ?r ?o)) (decrease (combustible ?r) 1) 
-                 (increase (totalCost) 1))
+                 (increase (totalCost) 5))
   )
 )

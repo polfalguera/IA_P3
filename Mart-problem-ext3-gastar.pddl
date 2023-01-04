@@ -1,5 +1,5 @@
-(define (problem Mart-Problem)
-   (:domain MartBasic)
+(define (problem Mart-Problem3Gastar)
+   (:domain Mart3Gastar)
    (:objects 
         AL1 AL2 AL3 AL4 AL5 AL6 - almacen
         AS1 AS2 AS3 AS4 - asentamiento
@@ -8,7 +8,18 @@
         R1 R2 R3 - rover
     )
 
-  (:init    
+  (:init
+    (= (personaCargada R1) 0)
+    (= (personaCargada R2) 0)
+    (= (personaCargada R3) 0)
+    (= (suministroCargado R1) 0)
+    (= (suministroCargado R2) 0)
+    (= (suministroCargado R3) 0)
+    (= (combustible R1) 100)
+    (= (combustible R2) 100)
+    (= (combustible R3) 100)
+    
+    (= (totalCost) 0)
     (= (servidos) 0)
 
     (accesible AL1 AL2) (accesible AL2 AL1)
@@ -55,6 +66,16 @@
     (pendiente S6)(pendiente S7)(pendiente S8)(pendiente S9)(pendiente S10)(pendiente S11)
     (pendiente S12)
 
+    (prioridad1 Marc)(prioridad3 Alex)(prioridad2 Pol)(prioridad3 Jin)
+    (prioridad1 Wiki)(prioridad2 Lluc)(prioridad1 Maseo)(prioridad3 LianYu)
+    (prioridad1 Socio)(prioridad1 Manzanas)(prioridad2 Peras)(prioridad3 Naranjas)
+    (prioridad3 Melones)(prioridad1 Leche)(prioridad2 Mejillones)
+    (prioridad2 P1)(prioridad1 P2)(prioridad3 P3)(prioridad2 P4)(prioridad3 P5)(prioridad1 P6)
+    (prioridad1 P7)(prioridad3 P8)(prioridad3 P9)(prioridad2 P10)(prioridad2 P11)(prioridad3 P12)
+    (prioridad1 P13)(prioridad3 S1)(prioridad1 S2)(prioridad2 S3)(prioridad1 S4)(prioridad1 S5)
+    (prioridad1 S6)(prioridad1 S7)(prioridad2 S8)(prioridad3 S9)(prioridad3 S10)(prioridad2 S11)
+    (prioridad2 S12)
+
     (isPersona Pol)(isPersona Jin)(isPersona Wiki)(isPersona Lluc)(isPersona Maseo)
     (isPersona LianYu)(isPersona Socio)(isPersona Marc)(isPersona Alex)
     (isPersona P1)(isPersona P2)(isPersona P3)(isPersona P4)(isPersona P5)(isPersona P6)
@@ -72,4 +93,5 @@
   )
 
   (:goal (= (servidos) 15))
+  (:metric minimize (totalCost))
 )
